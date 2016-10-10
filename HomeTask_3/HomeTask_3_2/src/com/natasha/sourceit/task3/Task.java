@@ -6,8 +6,12 @@ package com.natasha.sourceit.task3;
 public class Task {
     private float value;
 
-    public void setN(float value){
+    public void setValue(float value){
         this.value = value;
+    }
+
+    public float getValue() {
+        return value;
     }
 
     public int minValue(){
@@ -39,31 +43,29 @@ public class Task {
     }
 
     public int maxValue(){
-        int a = (int)(value * 100);
-        int c = a%10;
-        int max = c/1;
-        c = a%100;
-        int d = c/10;
-        if(d > max){
-            max = d;
+        int vInt = (int)(value * 100);
+        int digits = vInt % 10;
+        int max = digits/1;
+        digits = vInt % 100;
+        int nextDigits = digits/10;
+        if(nextDigits > max){
+            max = nextDigits;
         }
-        c = a%1000;
-        d = c/100;
-        if(d > max){
-            max = d;
+        digits = vInt % 1000;
+        nextDigits = digits/100;
+        if(nextDigits > max){
+            max = nextDigits;
         }
         return max;
     }
 
     public  int maxValue2(){
-        int d = 0;
-        int max = 0;
+        int max = Integer.MIN_VALUE;
+        int vInt = (int)(value * 100);
         for(int i =0, j = 1; i < 3; i++, j = j * 10){
-            int a = (int)(value * 100);
-            a = a % (j*10);
-            d = a/j;
-            if(max == 0 || d > max){
-                max = d;
+            int digits = vInt % (j*10)/j;
+            if(digits > max){
+                max = digits;
             }
         }
         return max;
