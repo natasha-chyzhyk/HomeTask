@@ -39,7 +39,7 @@ public class Flat {
             return null;
         }
     }
-    public  float getTotalSquare() {
+    public float getTotalSquare() {
         float square =0;
         if (rooms != null) {
             for (Room r : rooms) {
@@ -50,7 +50,7 @@ public class Flat {
     }
 
     public float getLivingSquare(){
-        float square =0;
+        float square = 0;
         if (rooms != null) {
             for (Room r : rooms) {
                 if (r instanceof RoomLiving) {

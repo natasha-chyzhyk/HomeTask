@@ -5,6 +5,7 @@ package com.natasha.sourceit.task2.house.room;
  */
 public abstract class RoomLiving extends Room {
     public RoomLiving(float square, float height) {
+
         super(square, height);
     }
 }
