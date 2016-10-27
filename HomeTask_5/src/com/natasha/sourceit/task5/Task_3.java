@@ -7,28 +7,50 @@ import java.util.Random;
  * Created by Stas on 19.10.2016.
  */
 public class Task_3 {
-    public void array2d_1(){
-        float[][] array2 = new float[10][10];
-        Random ran = new Random();
-        for(int i = 0; i < array2.length; i++){
-            for(int j = 0; j < array2.length; j++){
-                array2[i][j] = ran.nextFloat();
-            }
-        }
-        System.out.println(Arrays.deepToString(array2));
+    private Random randomGenerator = new Random();
+    private int arrayMinValue, arrayMaxValue;
+
+    public Task_3(int arrayMinValue, int arrayMaxValue) {
+        this.arrayMinValue = arrayMinValue;
+        this.arrayMaxValue = arrayMaxValue;
     }
 
-    public void array2d_2(){
-        int[][] dd =new int[5][];
-        for (int i = 0, j = 1; i < dd.length; i++, j +=2){
-            dd[i] = new int[j];
+    public void array2d_2(int nRows, int minRowLength, int maxRowLength) {
+
+        int[][] array2d = create2DArray(nRows, minRowLength, maxRowLength);
+
+        System.out.println(Arrays.deepToString(array2d));
+    }
+
+    private int[][] create2DArray(int nRows, int minRowLength, int maxRowLength) {
+        int[][] array = new int[nRows][];
+        for (int i = 0; i < array.length; i++){
+            array[i] = fillRow( createRandomLengthRow(minRowLength, maxRowLength) );
         }
-        Random ran = new Random();
-        for(int i = 0; i < dd.length; i++){
-            for(int j = 0; j < dd[i].length; j++){
-                dd[i][j] = ran.nextInt(100);
-            }
+        return array;
+    }
+
+
+
+
+    private int[] createRandomLengthRow(int minRowLength, int maxRowLength) {
+        return new int[getRandomIntFromMinToMax(minRowLength, maxRowLength)];
+    }
+
+    private int[] fillRow(int[] row) {
+        for (int i=0; i<row.length; i++) {
+            row[i] = getRandomIntFromMinToMax(arrayMinValue, arrayMaxValue);
         }
-        System.out.println(Arrays.deepToString(dd));
+        return row;
+    }
+
+
+
+    private int getRandomIntFromMinToMax(int min, int max) {
+        if (max > min) {
+            return min + randomGenerator.nextInt(max - min);
+        } else {
+            throw new IllegalArgumentException("Minimum must be less then maximum");
+        }
     }
 }

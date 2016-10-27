@@ -1,7 +1,6 @@
 package com.natasha.sourceit.task5;
 
 import java.util.Arrays;
-import java.util.Random;
 
 public class Main {
 
@@ -9,10 +8,10 @@ public class Main {
     public static final int N_COLS = 6;
 
     public static void main(String[] args) {
-        /*System.out.println("----------" + "Task_1" + "-----------");
+        System.out.println("----------" + "Task_1" + "-----------");
         Task_1 task1 = new Task_1();
-        int[] array1 = new int[10];
-        task1.print(array1);
+        int[] array1 = new int[]{1, 0, 8, 0, 9, 9, 5, 9};
+        task1.printNumberOfMaxElement(array1);
         System.out.println();
 
         System.out.println("----------" + "Task_2" + "-----------");
@@ -21,9 +20,8 @@ public class Main {
         task2.change(array2);
 
         System.out.println("----------" + "Task_3" + "-----------");
-        Task_3 task3 = new Task_3();
-        task3.array2d_1();
-        task3.array2d_2();
+        Task_3 task3 = new Task_3(12, 45);
+        task3.array2d_2(6, 3, 8);
 
         System.out.println("----------" + "Task_4" + "-----------");
         Task_4 task4 = new Task_4();
@@ -32,13 +30,10 @@ public class Main {
         System.out.println();
 
         System.out.println("----------" + "Task_5" + "-----------");
-        Task_5 task5 = new Task_5();
-        int[] array5 = new int[999999];
-        task5.ticket(array5);
-        task5.ticket1(array5);
+        new Task_5().getNumberOfLuckyTickent(1, 9999);
 
-        System.out.println("----------" + "Task_6" + "-----------");
-        /*
+        /*System.out.println("----------" + "Task_6" + "-----------");
+
             0    1    2    3
          ---------------------
   i   0  | 1  | 2  | 3  | 4  |
@@ -120,8 +115,8 @@ public class Main {
             // Результат состояния игрока (живой или нет)
 
             //verify whether we have a mine
-            //if positive - print game over message
-            // otherwise - change player's position and print oOK message
+            //if positive - printNumberOfMaxElement game over message
+            // otherwise - change player's position and printNumberOfMaxElement oOK message
             //the result is a player's state(alive or not)
             System.out.println("One Two Three");
             return true;
