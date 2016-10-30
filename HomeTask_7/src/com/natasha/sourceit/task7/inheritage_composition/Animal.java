@@ -1,8 +1,5 @@
 package com.natasha.sourceit.task7.inheritage_composition;
 
-/**
- * Created by Stas on 24.10.2016.
- */
 public abstract class Animal {
     private String livingArea;
     private float age;
