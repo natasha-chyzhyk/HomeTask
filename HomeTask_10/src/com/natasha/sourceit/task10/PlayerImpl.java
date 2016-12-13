@@ -3,13 +3,14 @@ package com.natasha.sourceit.task10;
 import java.util.Random;
 
 /**
- * Created by Stas on 08.11.2016.
+ * Created by denis.selutin on 04.11.2016.
  */
 public class PlayerImpl implements Player {
 
     private String name;
     private int size;
     private Card[] hand;
+    private int score;
 
     public PlayerImpl() {
         this("Default");
@@ -31,6 +32,7 @@ public class PlayerImpl implements Player {
 
     @Override
     public void addCard(Card card) {
+        if (card == null) throw new IllegalArgumentException("Card cannot be null");
         hand[size++] = card;
     }
 
@@ -39,7 +41,6 @@ public class PlayerImpl implements Player {
         if(indexInTheHand < size) {
             Card cardToReturn = null;
             cardToReturn = hand[indexInTheHand];
-            hand[indexInTheHand] = null;
             hand[indexInTheHand] = hand[size - 1];
             hand[size - 1] = null;
             size--;
@@ -58,8 +59,25 @@ public class PlayerImpl implements Player {
         return this.size;
     }
 
+
+    @Override
+    public void resetScore() {
+        score = 0;
+    }
+
+    @Override
+    public void addScore(int deltaScore) {
+        score += deltaScore;
+    }
+
+    @Override
+    public int getScore() {
+        return score;
+    }
+
     @Override
     public String toString() {
         return "I'm " + this.name + ". I have " + this.size + " cards.";
     }
 }
+

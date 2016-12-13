@@ -1,7 +1,7 @@
 package com.natasha.sourceit.task10;
 
 /**
- * Created by Stas on 08.11.2016.
+ * Created by denis.selutin on 04.11.2016.
  */
 public interface Player {
     String getNAme();
@@ -9,4 +9,8 @@ public interface Player {
     Card getCard(int indexInTheHand);
     Card getRandomCard();
     int getHandSize();
+
+    void resetScore();
+    void addScore(int deltaScore);
+    int getScore();
 }
