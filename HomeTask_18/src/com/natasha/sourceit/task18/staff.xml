@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <staffs>
+        <staff id="1">
+            <firstName>
+                Вася
+            </firstName>
+            <lastName>
+                Пупкин
+            </lastName>
+            <sallary isRegular="true">
+                3000
+            </sallary>
+        </staff>
+        <staff id="1">
+            <firstName>
+                Петя
+            </firstName>
+            <lastName>
+                Пупкин
+            </lastName>
+
+            <sallary isRegular="true">
+                3000
+            </sallary>
+        </staff>
+
+    </staffs>
+    <companies>
+
+    </companies>
+</root>
