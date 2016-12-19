@@ -1,15 +1,18 @@
 package com.natasha.sourceit.task18;
 
+import javafx.beans.binding.IntegerBinding;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import javax.print.attribute.IntegerSyntax;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.Integer;
 
 public class Main {
 
@@ -39,17 +42,15 @@ public class Main {
             if(qName.equals("staff")) {
                 buff = new Staff();
             }
+            sb = new StringBuilder();
             if(qName.equalsIgnoreCase("staff") && attributes.getLength() > 0) {
+                buff.setId(sb.toString());
                 System.out.println("Id is " + attributes.getValue("id"));
             }
             if(qName.equalsIgnoreCase("sallary") && attributes.getLength() > 0) {
+                buff.setIsRegular(Boolean.parseBoolean(sb.toString()));
                 System.out.println("isRegular salary " + attributes.getValue("isRegular"));
             }
-            sb = new StringBuilder();
-
-
-
-
         }
 
         @Override
@@ -70,9 +71,6 @@ public class Main {
             }
             if(qName.equalsIgnoreCase("lastname")) {
                 buff.setLastName(sb.toString());
-            }
-            if(qName.equalsIgnoreCase("sallary") && qName.length() > 0){
-                buff.setIsRegular(Boolean.parseBoolean(sb.toString()));
             }
             if(qName.equalsIgnoreCase("sallary")){
                 buff.setSallaryValue(Double.parseDouble(sb.toString()));

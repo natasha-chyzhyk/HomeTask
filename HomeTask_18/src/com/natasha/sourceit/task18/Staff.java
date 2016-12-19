@@ -1,5 +1,6 @@
 package com.natasha.sourceit.task18;
 
+import javax.print.attribute.IntegerSyntax;
 import java.io.Serializable;
 
 /**
@@ -11,6 +12,15 @@ public class Staff implements Serializable {
     private String nickName;
     private double sallaryValue;
     private boolean isRegular;
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getFirsstName() {
         return firsstName;
