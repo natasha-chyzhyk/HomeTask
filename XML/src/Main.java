@@ -1,14 +1,10 @@
-package com.natasha.sourceit.task18;
-
-import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
+import org.xml.sax.*;
 import org.xml.sax.helpers.DefaultHandler;
 
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
+import javax.xml.parsers.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -19,7 +15,7 @@ public class Main {
         SAXParserFactory factory =
                 SAXParserFactory.newInstance();
         SAXParser saxParser = factory.newSAXParser();
-        String path = "src\\com\\natasha\\sourceit\\task18\\staff.xml";
+        String path = "src\\staff.xml";
         DefaultHandler handler = new MyHandler();
         saxParser.parse(path, handler);
 
@@ -71,7 +67,7 @@ public class Main {
                 buff.setLastName(sb.toString());
             }
             if(qName.equalsIgnoreCase("sallary")){
-                buff.setSallaryValue(Double.parseDouble(sb.toString()));
+                buff.setSallaryValue(sb.toString());
             }
             if(qName.equals("staff")) {
                 staffs.add(buff);

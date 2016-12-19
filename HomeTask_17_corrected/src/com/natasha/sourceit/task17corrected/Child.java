@@ -8,7 +8,6 @@ import java.util.Random;
 public class Child implements Runnable{
     private String name;
     private IceCream.Taste preferredTaste;
-    private final Object shopLock = new Object();
     private IceCreamShop shop;
 
     public Child(String name, IceCream.Taste preferredTaste) {
@@ -21,9 +20,7 @@ public class Child implements Runnable{
     }
 
     public void setShop(IceCreamShop shop) {
-        synchronized (shopLock) {
-            this.shop = shop;
-        }
+        this.shop = shop;
     }
 
     private Random rnd = new Random();
@@ -32,16 +29,11 @@ public class Child implements Runnable{
         try {
             System.out.println("------------------  " + name + "  ---------------------");
 
-            IceCreamShop localShop;
-            synchronized (shopLock) {
-                localShop = shop;
-            }
-
-            if (localShop != null) {
+            if (shop != null) {
                 IceCream.Size size = IceCream.Size.values()[rnd.nextInt(IceCream.Size.values().length)];
                 System.out.println(String.format("Child %s wants %s %s Icecream.", name, size, preferredTaste));
 
-                IceCream ice = localShop.makeIceCream(preferredTaste, size);
+                IceCream ice = shop.makeIceCream(preferredTaste, size);
 
                 eatIceCream(ice);
             }

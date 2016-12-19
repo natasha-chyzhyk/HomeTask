@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Created by Stas on 05.12.2016.
  */
-public class Child{
+public class Child {
 
     private String name;
     private IceCream.Taste preferredTaste;
