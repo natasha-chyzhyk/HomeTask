@@ -36,6 +36,9 @@ public class Main {
         public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
             String out = "START " + qName + " " + attributes.getLength();
             System.out.println(out);
+            if(qName.equals("staff")) {
+                buff = new Staff();
+            }
             if(qName.equalsIgnoreCase("staff") && attributes.getLength() > 0) {
                 System.out.println("Id is " + attributes.getValue("id"));
             }
@@ -44,9 +47,7 @@ public class Main {
             }
             sb = new StringBuilder();
 
-            if(qName.equals("staff")) {
-                buff = new Staff();
-            }
+
 
 
         }
@@ -69,6 +70,9 @@ public class Main {
             }
             if(qName.equalsIgnoreCase("lastname")) {
                 buff.setLastName(sb.toString());
+            }
+            if(qName.equalsIgnoreCase("sallary") && qName.length() > 0){
+                buff.setIsRegular(Boolean.parseBoolean(sb.toString()));
             }
             if(qName.equalsIgnoreCase("sallary")){
                 buff.setSallaryValue(Double.parseDouble(sb.toString()));
