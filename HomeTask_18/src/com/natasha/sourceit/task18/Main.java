@@ -44,11 +44,11 @@ public class Main {
             }
             sb = new StringBuilder();
             if(qName.equalsIgnoreCase("staff") && attributes.getLength() > 0) {
-                buff.setId(sb.toString());
+                buff.setId(attributes.getValue("id"));
                 System.out.println("Id is " + attributes.getValue("id"));
             }
             if(qName.equalsIgnoreCase("sallary") && attributes.getLength() > 0) {
-                buff.setIsRegular(Boolean.parseBoolean(sb.toString()));
+                buff.setIsRegular(Boolean.parseBoolean(attributes.getValue("isRegular")));
                 System.out.println("isRegular salary " + attributes.getValue("isRegular"));
             }
         }
