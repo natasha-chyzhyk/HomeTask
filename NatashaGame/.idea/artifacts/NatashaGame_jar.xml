@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="NatashaGame:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/NatashaGame_jar</output-path>
+    <root id="archive" name="NatashaGame.jar">
+      <element id="module-output" name="NatashaGame" />
+    </root>
+  </artifact>
+</component>

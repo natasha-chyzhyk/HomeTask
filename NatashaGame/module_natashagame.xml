@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_natashagame" default="compile.module.natashagame">
+  <dirname property="module.natashagame.basedir" file="${ant.file.module_natashagame}"/>
+  
+  <property name="module.jdk.home.natashagame" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.natashagame" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.natashagame" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.natashagame" value="-encoding windows-1251 -source 8 ${compiler.args}"/>
+  
+  <property name="natashagame.output.dir" value="${module.natashagame.basedir}/out/production/NatashaGame"/>
+  <property name="natashagame.testoutput.dir" value="${module.natashagame.basedir}/out/test/NatashaGame"/>
+  
+  <path id="natashagame.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="natashagame.module.production.classpath">
+    <path refid="${module.jdk.classpath.natashagame}"/>
+  </path>
+  
+  <path id="natashagame.runtime.production.module.classpath">
+    <pathelement location="${natashagame.output.dir}"/>
+  </path>
+  
+  <path id="natashagame.module.classpath">
+    <path refid="${module.jdk.classpath.natashagame}"/>
+    <pathelement location="${natashagame.output.dir}"/>
+  </path>
+  
+  <path id="natashagame.runtime.module.classpath">
+    <pathelement location="${natashagame.testoutput.dir}"/>
+    <pathelement location="${natashagame.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.natashagame">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.natashagame">
+    <patternset refid="excluded.from.module.natashagame"/>
+  </patternset>
+  
+  <path id="natashagame.module.sourcepath">
+    <dirset dir="${module.natashagame.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.natashagame" depends="compile.module.natashagame.production,compile.module.natashagame.tests" description="Compile module NatashaGame"/>
+  
+  <target name="compile.module.natashagame.production" depends="register.custom.compilers" description="Compile module NatashaGame; production classes">
+    <mkdir dir="${natashagame.output.dir}"/>
+    <javac2 destdir="${natashagame.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.natashagame}/javac">
+      <compilerarg line="${compiler.args.natashagame}"/>
+      <bootclasspath refid="natashagame.module.bootclasspath"/>
+      <classpath refid="natashagame.module.production.classpath"/>
+      <src refid="natashagame.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.natashagame"/>
+    </javac2>
+    
+    <copy todir="${natashagame.output.dir}">
+      <fileset dir="${module.natashagame.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.natashagame.tests" depends="register.custom.compilers,compile.module.natashagame.production" description="compile module NatashaGame; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.natashagame" description="cleanup module">
+    <delete dir="${natashagame.output.dir}"/>
+    <delete dir="${natashagame.testoutput.dir}"/>
+  </target>
+</project>
