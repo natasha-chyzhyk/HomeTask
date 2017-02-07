@@ -23,8 +23,8 @@ public class ClassDAO extends AbstractModelDAO<ClassDbModel>{
         super(dbConn);
     }
 
-    public List<ClassDbModel> getClassesForRoom(RoomDbModel room) throws SQLException {
-        String where = getWhereForEquals(COLUMN_ROOM_ID, room.getId());
+    public List<ClassDbModel> getClassesForRoom(int roomId) throws SQLException {
+        String where = getWhereForEquals(COLUMN_ROOM_ID, roomId);
         String sql = String.format(SQL_SELECT_TEMPLATE, TABLE_NAME, where);
         ResultSet rs = getDbConnection().createStatement().executeQuery(sql);
 
@@ -32,7 +32,7 @@ public class ClassDAO extends AbstractModelDAO<ClassDbModel>{
         if (rs.first()) {
             do {
                 ClassDbModel classDbModel = getModelFromResultSet(rs);
-                classDbModel.setRoom_id(room.getId());
+                classDbModel.setRoom_id(roomId);
                 models.add(classDbModel);
             } while (rs.next());
         }
